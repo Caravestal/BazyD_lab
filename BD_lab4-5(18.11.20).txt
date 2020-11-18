@@ -1,0 +1,37 @@
+zad.3
+c) alter table Postac add check(wiek<1001);
+zad.4
+a)   alter table Postac modify rodzaj enum('wiking','ptak','kobieta','syrena','waz');
+     insert into Postac values(7,'Loko','waz','1899-04-18',2,NULL,NULL,'16384726356');
+b,c) create table Marynarz2 Like Postac;
+     insert into Marynarz2 select * from Postac where statek='Erasmus';
+zad.5
+a) update Postac set statek=NULL where statek='Erasmus';
+b) delete from Postac where id_postaci=6;
+c) delete from Statek;
+d) alter table Postac drop foreign key Postac_ibfk_1;
+   drop table Statek;
+e) create table Zwierz(id int auto_increment primary key, nazwa varchar(40),wiek int);
+f) insert into Zwierz select id_postaci,nazwa,wiek from Postac where rodzaj='Ptak' or rodzaj='Waz' or rodzaj='Syrena';
+zad.1
+1.) create table Kreatura like wikingowie.kreatura;
+    create table Zasob like wikingowie.zasob;
+    create table Ekwipunek like wikingowie.ekwipunek;
+2.) insert into Kreatura select * from wikingowie.kreatura;
+    insert into Zasob select * from wikingowie.zasob;
+    insert into Ekwipunek select * from wikingowie.ekwipunek;
+3.) select * from Zasob where rodzaj='jedzenie';
+4.) select idZasobu,ilosc from Ekwipunek where idKreatury=1 or idKreatury=2 or idKreatury=3;
+    LUB
+    select idZasobu,ilosc from Ekwipunek where idKreatury in(1,2,3);
+zad.2
+1.) select * from Kreatura where rodzaj!='wiedzma' and udzwig>=50;
+2.) select * from Zasob where waga>=2 and waga<=5;
+3.) select * from Kreatura where nazwa like %or% and udzwig>=30 and udzwig<=70;
+zad.3
+1.) select * from Zasob where month(dataPozyskania) in ('07','08');
+2.) select * from Zasob where rodzaj is not null order by waga asc;
+3.) select * from Kreatura order by dataUr asc limit 5;
+zad.4
+1.) select distinct(rodzaj) from Zasob;
+2.) select concat(nazwa," - ",rodzaj) as zlepione from Kreatura where nazwa like 'wi%';
