@@ -1,0 +1,17 @@
+zad.4
+3.) select waga*ilosc from Zasob where dataPozyskania between '2000-01-01' and '2007-12-31';
+zad.5
+1.)  select nazwa, ilosc*waga*0.7, ilosc*waga*0,3 from Zasob;
+2.)  select * from Zasob where rodzaj is null;
+3.)  select distinct rodzaj from Zasob where nazwa like 'Ba%' or nazwa like '%or' order by rodzaj asc;
+zad.1
+1.)  select avg(waga) from Kreatura where rodzaj='wiking';
+2.)  select rodzaj,count(nazwa),avg(waga) from Kreatura group by rodzaj;
+3.)  select rodzaj,avg(year(current_timestamp)-year(dataUr)) as 'sredni wiek' from Kreatura group by rodzaj;
+     lub
+     select rodzaj,round(avg(year(current_timestamp)-year(dataUr))) as 'sredni wiek' from Kreatura group by rodzaj;
+     (round - zaokrągla, avg- srednia)
+zad.2
+1.)  select rodzaj,sum(waga) from Zasob group by rodzaj;
+2.)  select distinct nazwa, avg(waga) from Zasob group by nazwa having avg(waga)>10 and sum(ilosc)>=4;
+3.)  select rodzaj,count(distinct nazwa) from Zasob group by rodzaj having sum(ilosc)>1;
