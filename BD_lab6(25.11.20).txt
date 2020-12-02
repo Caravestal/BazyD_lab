@@ -3,16 +3,16 @@ zad.3
 2.) select k.nazwa, z.nazwa, e.ilosc from Kreatura as k, Zasob as z, Ekwipunek as e where k.idKreatury=e.idKreatury and z.idZasobu=e.idZasobu;
 3.) select * from Kreatura k left join Ekwipunek e on k.idKreatury=e.idKreatury where e.idKreatury is not null;
 zad.4
-1.) select k.nazwa, z.nazwa from Kreatura as k, Ekwipunek as e, Zasob as z where k.idKreatury=e.idKreatury and e.idZasobu=z.idZasobu and k.rodzaj='wiking' and k.dataUr between '1670-01-01' and '1679-12-31';
+1.) select k.nazwa, z.nazwa from Kreatura as k, Ekwipunek as e, Zasob as z where k.idKreatury=e.idKreatury and e.idZasobu=z.idZasobu and k.rodzaj='wiking' and k.dataUr between    '1670-01-01' and '1679-12-31';
 2.) select k.nazwa, k.dataUr from Kreatura k natural join Ekwipunek e inner join Zasob z on e.idZasobu=z.idZasobu where z.rodzaj='jedzenie' order by k.dataUr desc limit 5;
 3.) select concat(k.nazwa,' - ',k2.nazwa) from Kreatura as k, Kreatura as k2 where k2.idKreatury=k.idkreatury+5;
 zad.5
 1.) select k.rodzaj, avg(e.ilosc*z.waga) as srednia from Kreatura as k inner join Ekwipunek as e inner join Zasob as z on k.idKreatury=e.idKreatury and e.idZasobu=z.idZasobu where k.rodzaj NOT IN('malpa', 'waz') group by k.rodzaj having sum(e.ilosc)<30;
-2.) select 'najmlodsza',a.maxData, b.nazwa, a.rodzaj from (select max(dataUr) maxData, rodzaj from kreatura group by rodzaj) a, (select nazwa, dataUr from kreatura) b where a.maxData = b.dataUr
+2.) select 'najmlodsza',a.maxData, b.nazwa, a.rodzaj from (select max(dataUr) maxData, rodzaj from Kreatura group by rodzaj) a, (select nazwa, dataUr from Kreatura) b where a.maxData = b.dataUr
 union
-select 'najstarsza',a.minData, b.nazwa, a.rodzaj from (select min(dataUr) minData, rodzaj from kreatura group by rodzaj) a, (select nazwa, dataUr from kreatura) b where a.minData = b.dataUr;
+select 'najstarsza',a.minData, b.nazwa, a.rodzaj from (select min(dataUr) minData, rodzaj from Kreatura group by rodzaj) a, (select nazwa, dataUr from kreatura) b where a.minData = b.dataUr;
 LUB
-select a.nazwa, a.rodzaj, a.dataUr from kreatura a, (SELECT min(dataUr) min, max(dataUr) max
-from kreatura group by rodzaj) b WHERE b.min = a.dataUr OR b.max=a.dataUr;
+select a.nazwa, a.rodzaj, a.dataUr from Kreatura a, (SELECT min(dataUr) min, max(dataUr) max
+from Kreatura group by rodzaj) b WHERE b.min = a.dataUr OR b.max=a.dataUr;
 
 
